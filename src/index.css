@@ -7,19 +7,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.app {
+  padding: 100px;
 }
 
 .bingo-row {
   display: flex;
+  justify-content: center;
 }
 
 .bingo-val {
   height: 100px;
   width: 100px;
   border: 1px solid black;
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.bingo-card {
+  margin-top: 100px;
+}
+
+.bingo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  form {
+    display: none;
+  }
 }

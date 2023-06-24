@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { shuffle } from "./utils";
-export default function BingoCard({ values }) {
+export default function BingoCard({ values, title }) {
   const [cardVals, setCardVals] = useState([
     ["", "", "", "", ""],
     ["", "", "", "", ""],
@@ -28,10 +28,11 @@ export default function BingoCard({ values }) {
       }
     }
     setCardVals(cardValsCopy);
-  }, [values]);
+  }, [values, cardVals]);
 
   return (
     <div class="bingo-card">
+      <div class="bingo-header bingo-row">{title}</div>
       {cardVals.map((row) => {
         return (
           <div class="bingo-row">
