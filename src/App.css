@@ -1,20 +1,40 @@
-.bingo-row {
+.app {
+  padding: 100px;
+}
+
+.bingo-row,
+.bingo-header {
   display: flex;
   justify-content: center;
+  width: 100%;
+  border-bottom: none;
+  align-items: center;
 }
 
 .bingo-val {
   height: 100px;
   width: 100px;
   border: 1px solid black;
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
   text-align: center;
+  padding: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.bingo-row > .bingo-val:last-child {
+  border-right: 1px solid black;
+}
+
+.bingo-row:last-child > .bingo-val {
+  border-bottom: 1px solid black;
 }
 
 .bingo-card {
   margin-bottom: 100px;
+  width: fit-content;
 }
 
 .label-name {
@@ -36,10 +56,28 @@ button {
   margin-bottom: 20px;
 }
 
+.free-img {
+  height: 100%;
+  width: 100%;
+}
+
+.bingo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.bingo-card {
+  margin-top: 100px;
+}
+
 @media print {
-  form {
+  .controls {
     visibility: hidden;
     height: 0;
     width: 0;
+  }
+
+  .app {
+    padding: 0;
   }
 }
