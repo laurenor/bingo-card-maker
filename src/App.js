@@ -1,6 +1,6 @@
 import "./App.css";
 import BingoCard from "./BingoCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NUM_BINGO_VALUES = 24; // 1 free spot
 
@@ -13,7 +13,7 @@ function App() {
     const form = e.target;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
-    setBingoValues(formJson.bingoValues);
+    setBValues(formJson.bingoValues);
     setNumCards(formJson.numCards);
   };
 
@@ -23,6 +23,7 @@ function App() {
       .map((value) => value.trim())
       .filter((value) => value.length > 0);
     setBingoValues(parsedValues);
+    return parsedValues;
   };
 
   return (
@@ -44,9 +45,9 @@ function App() {
           <li>{val}</li>
         ))}
       </ul> */}
-      Num Cards: {numCards}
-      Bingo Values: {bingoValues}
-      <BingoCard />
+      Num Cards: <input value={numCards} disabled />
+      Bingo Values: <textarea value={bingoValues} />
+      <BingoCard values={bingoValues} />
     </div>
   );
 }
