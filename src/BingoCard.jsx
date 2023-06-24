@@ -15,30 +15,33 @@ export default function BingoCard({ values, title, freeType }) {
 
   // initialize vals
   useEffect(() => {
-    if (values.length < 2) {
-      console.log("HELLO", values.length);
-      if (values.length < 1) {
-        console.log("should reset");
-        setCardVals(DEFAULT_CARD_VALUES);
-      }
-    } else {
-      const shuffledVals = shuffle([...values]);
-      const cardValsCopy = [...cardVals];
-      for (let i = 0; i < cardVals.length; i++) {
-        const row = cardVals[i];
-        for (let j = 0; j < row.length; j++) {
-          const val = row[j];
-          if (val !== "FREE") {
-            if (shuffledVals.length) {
-              cardVals[i][j] = shuffledVals.pop();
-            } else {
-              break;
-            }
+    if (values.length < 1) {
+      setCardVals([
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "FREE", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+      ]);
+      return;
+    }
+
+    const vals = values.length >= 2 ? shuffle([...values]) : values;
+    const cardValsCopy = [...cardVals];
+    for (let i = 0; i < cardVals.length; i++) {
+      const row = cardVals[i];
+      for (let j = 0; j < row.length; j++) {
+        const val = row[j];
+        if (val !== "FREE") {
+          if (vals.length) {
+            cardVals[i][j] = vals.pop();
+          } else {
+            break;
           }
         }
       }
-      setCardVals(cardValsCopy);
     }
+    setCardVals(cardValsCopy);
   }, [values]);
 
   useEffect(() => {
