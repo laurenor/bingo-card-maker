@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/bingo-card-maker/static/css/main.dafd43bf.css",
-    "main.js": "/bingo-card-maker/static/js/main.c565a0ef.js",
+    "main.css": "/bingo-card-maker/static/css/main.4af895da.css",
+    "main.js": "/bingo-card-maker/static/js/main.84d60155.js",
     "static/media/remy_bingo.png": "/bingo-card-maker/static/media/remy_bingo.f6903259ace797fc50d7.png",
     "index.html": "/bingo-card-maker/index.html",
-    "main.dafd43bf.css.map": "/bingo-card-maker/static/css/main.dafd43bf.css.map",
-    "main.c565a0ef.js.map": "/bingo-card-maker/static/js/main.c565a0ef.js.map"
+    "main.4af895da.css.map": "/bingo-card-maker/static/css/main.4af895da.css.map",
+    "main.84d60155.js.map": "/bingo-card-maker/static/js/main.84d60155.js.map"
   },
   "entrypoints": [
-    "static/css/main.dafd43bf.css",
-    "static/js/main.c565a0ef.js"
+    "static/css/main.4af895da.css",
+    "static/js/main.84d60155.js"
   ]
 }
