@@ -105,7 +105,7 @@ export default function GameModal({ values, handleClose }) {
             <button>Submit</button>
           </form>
 
-          <div>
+          <div class="game-modal-called-items">
             <label class="label">Called items:</label>{" "}
             <textarea value={[...calledItems]} />
           </div>

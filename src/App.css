@@ -101,6 +101,17 @@ button {
   align-items: center;
 }
 
+.game-modal-called-items {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-modal-called-items > textarea {
+  width: 200px;
+  height: 50px;
+}
+
 .no-scroll {
   overflow: hidden;
 }
