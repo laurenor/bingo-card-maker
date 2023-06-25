@@ -1,5 +1,6 @@
 import "./App.css";
 import BingoCard from "./BingoCard";
+import GameModal from "./GameModal";
 import { useState } from "react";
 
 const DEFAULT_BINGO_VALUES = [];
@@ -12,13 +13,15 @@ function App() {
   const [numCards, setNumCards] = useState(DEFAULT_NUM_CARDS);
   const [title, setTitle] = useState(DEFAULT_TITLE);
   const [freeType, setFreeType] = useState(DEFAULT_FREE_TYPE);
+  const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
-    setBingoValues(setBValues(formJson.bingoValues));
+    const vals = setBValues(formJson.bingoValues);
+    setBingoValues(vals);
     setTitle(formJson.title);
     setFreeType(formJson.freeType);
     setNumCards(parseInt(formJson.numCards));
@@ -39,10 +42,14 @@ function App() {
     return parsedValues;
   };
 
+  const toggleShowGameModal = () => {
+    setShouldShowGameModal((prev) => !prev);
+  };
+
   return (
     <div className="app">
+      <h1>Bingo Card Maker</h1>
       <div class="controls">
-        <button>Start Game</button>
         <form onSubmit={handleSubmit} onReset={handleReset} class="bingo-form">
           <label>
             <div className="label-name">Title: </div>
@@ -72,9 +79,20 @@ function App() {
             <textarea name="bingoValues" defaultValue="" />
           </label>
 
-          <button type="reset">Reset form</button>
-          <button type="submit">Submit form</button>
+          <div class="form-actions">
+            <button type="reset" class="reset secondary">
+              Reset form
+            </button>
+            <button type="submit">Submit form</button>
+          </div>
         </form>
+        <button
+          onClick={toggleShowGameModal}
+          disabled={bingoValues.length < 1}
+          class="start"
+        >
+          Start Game
+        </button>
       </div>
 
       {[...Array(numCards)].map((e, i) => (
@@ -85,6 +103,10 @@ function App() {
           key={`card${i}`}
         />
       ))}
+
+      {shouldShowGameModal && (
+        <GameModal values={bingoValues} handleClose={toggleShowGameModal} />
+      )}
     </div>
   );
 }

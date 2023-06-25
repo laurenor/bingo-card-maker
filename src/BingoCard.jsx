@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { shuffle } from "./utils";
+import { shuffle, deepCopy } from "./utils";
 import RemyBingo from "./img/remy_bingo.png";
 
 const DEFAULT_CARD_VALUES = [
@@ -16,37 +16,28 @@ export default function BingoCard({ values, title, freeType }) {
   // initialize vals
   useEffect(() => {
     if (values.length < 1) {
-      setCardVals([
-        ["", "", "", "", ""],
-        ["", "", "", "", ""],
-        ["", "", "FREE", "", ""],
-        ["", "", "", "", ""],
-        ["", "", "", "", ""],
-      ]);
+      setCardVals(deepCopy(DEFAULT_CARD_VALUES));
       return;
     }
 
-    const vals = values.length >= 2 ? shuffle([...values]) : values;
-    const cardValsCopy = [...cardVals];
+    const vals = shuffle([...values]);
+    const cardValsCopy = deepCopy(DEFAULT_CARD_VALUES);
+
     for (let i = 0; i < cardVals.length; i++) {
       const row = cardVals[i];
       for (let j = 0; j < row.length; j++) {
         const val = row[j];
         if (val !== "FREE") {
           if (vals.length) {
-            cardVals[i][j] = vals.pop();
+            cardValsCopy[i][j] = vals.pop();
           } else {
-            break;
+            cardValsCopy[i][j] = "";
           }
         }
       }
     }
     setCardVals(cardValsCopy);
   }, [values]);
-
-  useEffect(() => {
-    console.log({ cardVals });
-  }, [cardVals]);
 
   return (
     <div class="bingo-card">

@@ -18,7 +18,10 @@ export function shuffle(array) {
   return array;
 }
 
-// Used like so
-//   var arr = [2, 11, 37, 42];
-//   shuffle(arr);
-//   console.log(arr);
+export function getRandom(items) {
+  return items[Math.floor(Math.random() * items.length)];
+}
+
+export function deepCopy(items) {
+  return JSON.parse(JSON.stringify(items));
+}
