@@ -28,7 +28,7 @@ export default function GameModal({ values, handleClose }) {
     if (
       window.confirm(
         "Are you sure you want to close the modal? If you close, your game will restart."
-      ) == true
+      ) === true
     ) {
       handleClose();
     }

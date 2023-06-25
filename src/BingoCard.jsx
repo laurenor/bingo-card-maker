@@ -37,6 +37,7 @@ export default function BingoCard({ values, title, freeType }) {
       }
     }
     setCardVals(cardValsCopy);
+    // eslint-disable-next-line
   }, [values]);
 
   return (
