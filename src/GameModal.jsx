@@ -11,9 +11,6 @@ export default function GameModal({ values, handleClose }) {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    resetOnClose();
-    handleClose();
-    // eslint-disable-next-line
   }, []);
 
   const resetOnClose = () => {
@@ -31,6 +28,7 @@ export default function GameModal({ values, handleClose }) {
         "Are you sure you want to close the modal? If you close, your game will restart."
       ) === true
     ) {
+      resetOnClose();
       handleClose();
     }
   };
