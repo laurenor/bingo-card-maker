@@ -13,6 +13,7 @@ export default function GameModal({ values, handleClose }) {
     document.body.style.overflow = "hidden";
     resetOnClose();
     handleClose();
+    // eslint-disable-next-line
   }, []);
 
   const resetOnClose = () => {
